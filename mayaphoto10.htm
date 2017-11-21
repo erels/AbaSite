@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="BreezeBrowser, www.breezesys.com">
+<script language="javascript">
+<!--
+// start reading the image
+var thePhoto = new Image();
+thePhoto.src = "mayaphoto10_std.jpg"
+
+// read timeout from the page's URL
+var timeout = 0
+var slideshow = 0
+var pause = 0
+var nextUrl = new String("mayaphoto11.htm")
+var url = new String(window.location)
+i = url.indexOf("?")
+if (i > 0)
+{
+	// enable slideshow
+	slideshow = 1
+
+	// pause slideshow if there are extra arguments
+	j = url.indexOf("+")
+	if (j > 0)
+	{
+		pause = 1
+		timeout = url.substring(i + 1, j)
+	}
+	else
+	{
+		timeout = url.substring(i + 1, url.length)
+	}
+	if (nextUrl.length <= 0) nextUrl = new String("index.htm")
+	else nextUrl += "?" + timeout
+}
+
+// go to the index page
+function index()
+{
+	var url = new String("index.htm");
+	window.location = url;
+}
+
+// go to the next page
+function next()
+{
+	// only move to next page if slideshow is running
+	if (!pause) window.location = nextUrl;
+}
+
+// move to next/previous image and pause the slideshow
+function nextPrevious(direction)
+{
+	if (direction > 0)
+	{
+		url = new String("mayaphoto11.htm")
+	}
+	else
+	{
+		url = new String("mayaphoto09.htm")
+	}
+	if (url.length > 0)
+	{
+		url += "?" + timeout + "+0"
+		window.location = url;
+	}
+}
+
+// start/stop the slideshow
+function stopSlideshow(f)
+{
+	if (pause)
+	{
+		// restart the slideshow
+		pause = 0;
+		setTimeout("next()", 1000)
+		f.button.value = "Stop Slideshow"
+	}
+	else
+	{
+		// disable the slideshow
+		pause = 1;
+		f.button.value = "Restart Slideshow"
+	}
+	return false;
+}
+// -->
+</script>
+</center>
+<title>The eagle has landed</title>
+</head>
+<body bgcolor="black" text="gray">
+<center>
+<noscript>
+<h1>xxxxx</h1>
+<hr>
+<a href="mayaphoto09.htm">Prev</a> | <a href="index.htm">Index</a> | <a href="mayaphoto11.htm">Next</a>
+<p>
+</noscript>
+  <script language="javascript">
+<!--
+if (slideshow)
+{
+	document.write('<FORM ACTION="index.htm" METHOD="GET">');
+	document.write('<INPUT TYPE="button" VALUE="<" onClick="nextPrevious(-1)">');
+	document.write('<INPUT TYPE="button" VALUE="Index" onClick="index()">');
+	if (pause) document.write('<INPUT TYPE="button" NAME="button" VALUE="Restart Slideshow" onClick="stopSlideshow(this.form)">');
+	else document.write('<INPUT TYPE="button" NAME="button" VALUE="Stop Slideshow" onClick="stopSlideshow(this.form)">');
+	document.write('<INPUT TYPE="button" VALUE=">" onClick="nextPrevious(1)">');
+	document.write('</FORM>');
+}
+else
+{
+	document.write('<a href="mayaphoto09.htm">Prev</a> | <a href="index.htm">Index</a> | <a href="mayaphoto11.htm">Next</a><p>');
+}
+// -->
+</script>
+  <font color="#FFFF00">The eagle has landed</font> 
+  <table cellspacing="0" cellpadding="0" border="0">
+<tr>
+	<td align="right">
+		<table border bordercolorlight="#aaaaaa">
+		<tr>
+		<td><font color=black><img name="photo" src="mayaphoto10_std.jpg" width="302" height="450" alt=""></font></td>
+		</tr>
+		</table>
+		<!--font size="-1">Copyright &copy; 2003, </font-->
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		
+	</td>
+</tr>
+</table>
+</center>
+<!--mayaphoto10.jpg<br />2003:07:31 22:34:39<br />File size: 20KB<br />Image size: 302 x 450-->
+<script language="javascript">
+<!--
+function poll()
+{
+	if (slideshow && !pause)
+	{
+		if (thePhoto.complete) setTimeout('next()', 1000 * timeout)
+		else setTimeout('poll()', 500)
+	}
+}
+poll()
+// -->
+</script>
+</body>
+</html>
